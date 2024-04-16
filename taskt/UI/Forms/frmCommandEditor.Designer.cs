@@ -55,7 +55,7 @@
             this.cboSelectedCommand.Location = new System.Drawing.Point(6, 5);
             this.cboSelectedCommand.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.cboSelectedCommand.Name = "cboSelectedCommand";
-            this.cboSelectedCommand.Size = new System.Drawing.Size(619, 28);
+            this.cboSelectedCommand.Size = new System.Drawing.Size(619, 39);
             this.cboSelectedCommand.TabIndex = 2;
             this.cboSelectedCommand.SelectionChangeCommitted += new System.EventHandler(this.cboSelectedCommand_SelectionChangeCommitted);
             this.cboSelectedCommand.Click += new System.EventHandler(this.cboSelectedCommand_Click);
@@ -182,7 +182,7 @@
             // 
             // frmCommandEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.SteelBlue;

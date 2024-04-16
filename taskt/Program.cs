@@ -112,7 +112,7 @@ namespace taskt
                     System.IO.File.Delete(updaterExecutableDestination);
                 }
 
-                SplashForm = new UI.Forms.Supplemental.frmSplash();
+                SplashForm = new UI.Forms.Supplemental.frmSplash ();
                 SplashForm.Show();
 
                 Application.DoEvents();

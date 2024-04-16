@@ -1352,12 +1352,7 @@
     <None Include="Resources\RPALogo.png" />
     <None Include="Resources\various-chat-icon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="External Dependencies\" />
-    <Folder Include="Sample Scripts\" />
-    <Folder Include="Samples\" />
-    <Folder Include="UI\Utilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
       <Visible>False</Visible>
