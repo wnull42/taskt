@@ -4679,6 +4679,10 @@ namespace taskt.UI.Forms
 
         #endregion
 
+        private void txtCommandFilter_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

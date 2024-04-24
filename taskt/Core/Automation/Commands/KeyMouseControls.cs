@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using taskt.Core.Automation.Attributes.PropertyAttributes;
+using Microsoft.VisualBasic.Devices;
 
 namespace taskt.Core.Automation.Commands
 {
@@ -62,6 +63,21 @@ namespace taskt.Core.Automation.Commands
         [PropertyTextBoxSetting(1, false)]
         [PropertyValidationRule("Wait Time", PropertyValidationRule.ValidationRuleFlags.LessThanZero | PropertyValidationRule.ValidationRuleFlags.EqualsZero)]
         public static string v_WaitTimeAfterMouseClick { get; }
+
+        /// <summary>
+        /// scroll whell delta
+        /// </summary>
+        [PropertyDescription("scroll whell delta")]
+        //[InputSpecification("Wait Time", true)]
+        //[PropertyDetailSampleUsage("**500**", PropertyDetailSampleUsage.ValueType.Value, "Wait Time")]
+        //[PropertyDetailSampleUsage("**{{{vWaitTime}}}**", PropertyDetailSampleUsage.ValueType.VariableValue, "Wait Time")]
+        //[Remarks("When the Wait Time is less than **100** is specified, it will be **100**")]
+        //[PropertyShowSampleUsageInDescription(true)]
+        [PropertyIsOptional(true, "900")]
+        //[PropertyFirstValue("500")]
+        [PropertyTextBoxSetting(1, false)]
+        [PropertyValidationRule("Scroll Whell Delta", PropertyValidationRule.ValidationRuleFlags.LessThanZero | PropertyValidationRule.ValidationRuleFlags.EqualsZero)]
+        public static string v_ScrollWhellDelta { get; }
 
         /// <summary>
         /// offset x
@@ -197,6 +213,12 @@ namespace taskt.Core.Automation.Commands
             {
                 mouse_event((int)mouse, xMousePosition, yMousePosition, 0, 0);
             }
+        }
+
+        public static void SendScrollWheel (int delta)
+        {
+            int MOUSEEVENTF_WHEEL = 0x0800;
+            mouse_event(MOUSEEVENTF_WHEEL, 0, 0, delta, 0);
         }
 
         public static void KeyDownKeyUp(Keys[] keys)

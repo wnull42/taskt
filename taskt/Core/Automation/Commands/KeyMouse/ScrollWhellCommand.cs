@@ -8,21 +8,22 @@ namespace taskt.Core.Automation.Commands
     [Serializable]
     [Attributes.ClassAttributes.Group("Key/Mouse Commands")]
     [Attributes.ClassAttributes.SubGruop("Mouse")]
-    [Attributes.ClassAttributes.CommandSettings("Click Mouse")]
-    [Attributes.ClassAttributes.Description("Simulates mouse clicks.")]
+    [Attributes.ClassAttributes.CommandSettings("Scroll Wheel")]
+    [Attributes.ClassAttributes.Description("Simulates mouse scroll wheel.")]
     [Attributes.ClassAttributes.UsesDescription("Use this command to simulate multiple types of mouse clicks.")]
     [Attributes.ClassAttributes.ImplementationDescription("This command implements 'SetCursorPos' function from user32.dll to achieve automation.")]
     [Attributes.ClassAttributes.EnableAutomateRender(true)]
     [Attributes.ClassAttributes.EnableAutomateDisplayText(true)]
     public class ScrollWhellCommand : ScriptCommand
     {
-        [XmlAttribute]
-        [PropertyVirtualProperty(nameof(KeyMouseControls), nameof(KeyMouseControls.v_MouseClickType))]
-        public string v_MouseClick { get; set; }
 
         [XmlAttribute]
         [PropertyVirtualProperty(nameof(KeyMouseControls), nameof(KeyMouseControls.v_WaitTimeAfterMouseClick))]
         public string v_WaitTimeAfterClick { get; set; }
+
+        [XmlAttribute]
+        [PropertyVirtualProperty(nameof(KeyMouseControls), nameof(KeyMouseControls.v_ScrollWhellDelta))]
+        public string v_ScrollWheelDelta { get; set; }
 
         public ScrollWhellCommand()
         {
@@ -36,14 +37,17 @@ namespace taskt.Core.Automation.Commands
         {
             var engine = (Engine.AutomationEngineInstance)sender;
 
-            var clickType = this.GetUISelectionValue(nameof(v_MouseClick), engine);
+            var delta =  this.ConvertToUserVariableAsInteger(nameof(v_ScrollWheelDelta), engine);
 
-            var mousePosition = Cursor.Position;
-            //User32Functions.SendMouseClick(clickType, mousePosition.X, mousePosition.Y);
-            KeyMouseControls.SendMouseClick(clickType, mousePosition.X, mousePosition.Y);
+            KeyMouseControls.SendScrollWheel(delta);
 
-            var waitTime = this.ConvertToUserVariableAsInteger(nameof(v_WaitTimeAfterClick), engine);
-            System.Threading.Thread.Sleep(waitTime);
+            //var clickType = this.GetUISelectionValue(nameof(v_MouseClick), engine);
+
+            //var mousePosition = Cursor.Position;
+            //KeyMouseControls.SendMouseClick(clickType, mousePosition.X, mousePosition.Y);
+
+            //var waitTime = this.ConvertToUserVariableAsInteger(nameof(v_WaitTimeAfterClick), engine);
+            //System.Threading.Thread.Sleep(waitTime);
         }
     }
 }
